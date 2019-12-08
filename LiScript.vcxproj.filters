@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lexer">
+      <UniqueIdentifier>{4a5cb812-8831-4858-8a71-c56013020f71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Token">
+      <UniqueIdentifier>{82b767c2-7dee-4894-866e-52ba2adbeec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Lexer">
+      <UniqueIdentifier>{3853c010-4dd9-4a5e-866a-1991040170d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Token">
+      <UniqueIdentifier>{f098a545-8df7-4257-ab32-c7c233e01637}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Test">
+      <UniqueIdentifier>{87b5ca34-8597-4612-99a4-78586da168bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Test">
+      <UniqueIdentifier>{2b82d760-4bc6-47f1-877b-b919cbb072d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Token\ContainerTokens">
+      <UniqueIdentifier>{5805745d-34ed-49b0-a19d-998a1c4e96ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Token\ContainerTokens">
+      <UniqueIdentifier>{2d210e6b-5a03-4a44-935f-5d106734610f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="lexer.cpp">
+      <Filter>Исходные файлы\Lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar.cpp">
+      <Filter>Исходные файлы\Lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="token.cpp">
+      <Filter>Исходные файлы\Token</Filter>
+    </ClCompile>
+    <ClCompile Include="base_token.cpp">
+      <Filter>Исходные файлы\Token</Filter>
+    </ClCompile>
+    <ClCompile Include="test_token_type.cpp">
+      <Filter>Исходные файлы\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="vector_tokens.cpp">
+      <Filter>Исходные файлы\Token\ContainerTokens</Filter>
+    </ClCompile>
+    <ClCompile Include="container.cpp">
+      <Filter>Исходные файлы\Token\ContainerTokens</Filter>
+    </ClCompile>
+    <ClCompile Include="ListTokens.cpp">
+      <Filter>Исходные файлы\Token\ContainerTokens</Filter>
+    </ClCompile>
+    <ClCompile Include="lexical_grammar.cpp">
+      <Filter>Исходные файлы\Lexer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lexer.h">
+      <Filter>Файлы заголовков\Lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="lexical_grammar.h">
+      <Filter>Файлы заголовков\Lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar.h">
+      <Filter>Файлы заголовков\Lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="token.h">
+      <Filter>Файлы заголовков\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="token_type.h">
+      <Filter>Файлы заголовков\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="base_token.h">
+      <Filter>Файлы заголовков\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="test_token_type.h">
+      <Filter>Файлы заголовков\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="container.h">
+      <Filter>Файлы заголовков\Token\ContainerTokens</Filter>
+    </ClInclude>
+    <ClInclude Include="vector_tokens.h">
+      <Filter>Файлы заголовков\Token\ContainerTokens</Filter>
+    </ClInclude>
+    <ClInclude Include="ListTokens.h">
+      <Filter>Файлы заголовков\Token\ContainerTokens</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
