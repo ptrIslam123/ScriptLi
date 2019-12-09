@@ -1,4 +1,3 @@
-#include <iostream>
 #include "lexer.h"
 
 Lexer::Lexer(const std::string& text, LexicalGrammar* lexical, Container* container)
@@ -30,7 +29,6 @@ void Lexer::run()
 			tokens->push_back(
 				lexical_->tokenizeString()
 			);
-			next(1);
 			continue;
 		}
 
@@ -38,7 +36,6 @@ void Lexer::run()
 		if (peek(0) == '/' && peek(1) == '/')
 		{
 			lexical_->tokenizeComment();
-			next(1);
 			continue;
 		}
 
@@ -46,7 +43,6 @@ void Lexer::run()
 		if (peek(0) == '/' && peek(1) == '*')
 		{
 			lexical_->tokenizeMultiLineComment();
-			next(1);
 			continue;
 		}
 
@@ -56,7 +52,6 @@ void Lexer::run()
 			tokens->push_back(
 				lexical_->tokenizeNumber()
 			);
-			next(1);
 			continue;
 		}
 
@@ -66,7 +61,6 @@ void Lexer::run()
 			tokens->push_back(
 				lexical_->tokenizeWord()
 			);
-			next(1);
 			continue;
 		}
 

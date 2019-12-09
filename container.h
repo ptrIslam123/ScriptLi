@@ -14,7 +14,13 @@ enum class ContainerType
 class Container
 {
 public:
+	virtual ContainerType getType() const = 0;
+	virtual size_t size() const = 0;
 	virtual void push_back(Token*) = 0;
+	virtual void insert(const size_t, Token*) = 0;
+	virtual Token* get(const size_t) = 0;
+	virtual void remove(const size_t) = 0;
+	virtual void clear() = 0;
 
 };
 
