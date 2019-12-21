@@ -12,16 +12,19 @@ class LexicalGrammar
 {
 public:
 	virtual Token* tokenizeNumber() = 0;
-	virtual Token* tokenizeOperand() = 0;
 	virtual Token* tokenizeString() = 0;
-
+	virtual Token* tokenizeCharecter() = 0;
 	virtual Token* tokenizeWord() = 0;
+
+	virtual Token* tokenizeOperators() = 0;
 
 	virtual void tokenizeComment() = 0;
 	virtual void tokenizeMultiLineComment() = 0;
 
 	virtual char get(const int) = 0;
 	virtual void next(const int) = 0;
+
+	virtual size_t& numLine() = 0;
 };
 
 

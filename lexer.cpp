@@ -4,18 +4,16 @@ Lexer::Lexer(const std::string& text, LexicalGrammar* lexical, Container* contai
 	:text_(text), lexical_(lexical), tokens(container)
 {}
 
+Lexer::Lexer(const std::string& text, std::unique_ptr<LexicalGrammar> lexical, std::unique_ptr<Container> container)
+	:text_(text), lexical_(std::move(lexical)), tokens(std::move(container))
+{}
+
 Lexer::Lexer(std::string&& text, LexicalGrammar* lexical, Container* container)
 	: text_(text), lexical_(lexical), tokens(container)
 {}
 
 Lexer::~Lexer()
-{
-	delete tokens;
-	delete lexical_;
-
-	tokens = nullptr;
-	lexical_ = nullptr;
-}
+{}
 
 
 void Lexer::run()
@@ -64,17 +62,23 @@ void Lexer::run()
 			continue;
 		}
 
-		//tokenizeOperand
-		token = lexical_->tokenizeOperand();
-		if ( token != nullptr)
+		//tokenizeOperators
+		Token* operators = lexical_->tokenizeOperators();
+		if (operators != nullptr)
 		{
-			tokens->push_back(token);
-			next(1);
+			tokens->push_back(operators);
 			continue;
 		}
 
+		//next line
+		if ( peek(0) == '\n')
+		{
+			lexical_->numLine()++;
+		}
 		next(1);
 	}
+
+	tokens->push_back(makeToken(TokenType::EOI,""));
 }
 
 char Lexer::peek(const int position)
@@ -92,9 +96,14 @@ std::string Lexer::getText() const
 	return text_;
 }
 
-Container* Lexer::getTokens() const
+std::unique_ptr<Container>&& Lexer::getTokens() 
 {
-	return tokens;
+	return std::move(tokens);
+}
+
+std::unique_ptr<LexicalGrammar> Lexer::getLexicalGrammar()
+{
+	return std::move(lexical_);
 }
 
 

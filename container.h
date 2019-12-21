@@ -1,6 +1,7 @@
 #ifndef _CONTAINER_H_
 #define _CONTAINER_H_
 
+#include <iostream>
 #include "token.h"
 
 enum class ContainerType
@@ -19,6 +20,7 @@ public:
 	virtual void push_back(Token*) = 0;
 	virtual void insert(const size_t, Token*) = 0;
 	virtual Token* get(const size_t) = 0;
+	virtual std::unique_ptr<Token>&& getToken(const size_t) = 0;
 	virtual void remove(const size_t) = 0;
 	virtual void clear() = 0;
 

@@ -3,19 +3,22 @@
 
 enum class TokenType
 {
+	UNDEFINE,
+
 	/* type system */
 	NUMBER_INT,
 	NUMBER_DOUBLE,
 	TEXT,
 	CHAR,
+	BOOL,
 
 	/* key words */
 	WORD,
-	NODE,
+	PRINTLN,
+	SCANNER,
+	STRUCT,
 
-	POINT,
-	COMMA,
-	EQULLY,
+	NODE,
 
 
 
@@ -27,6 +30,28 @@ enum class TokenType
 	
 	LQ,		// (
 	RQ,		// )
+
+	POINT,		// .
+	COMMA,		// ,
+
+	/* logical operators*/
+	EQULLY,		// =
+	MORE,		// >
+	LESS,		// <
+	MORE_EQ,	// >=
+	LESS_EQ,	// <=
+	EQ,			// ==
+	BUT,		// !
+	NO_EQ,		// !=
+	AND,		// &&
+	OR,			// ||
+
+
+	/* Contecst fruently grammar */
+	STMT,
+	EXPR,
+	TERM,
+	FACT,
 
 
 	EOI

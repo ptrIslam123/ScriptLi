@@ -37,6 +37,42 @@
     <Filter Include="Исходные файлы\Token\ContainerTokens">
       <UniqueIdentifier>{2d210e6b-5a03-4a44-935f-5d106734610f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Parser">
+      <UniqueIdentifier>{5f35e839-cf7a-4699-a2bd-e6539e1d1927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Parser">
+      <UniqueIdentifier>{84ce2a56-ddab-4a42-828a-3e76d657a8bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Parser\AST">
+      <UniqueIdentifier>{50360686-7a3f-4497-9478-9563c69c2df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Parser\AST">
+      <UniqueIdentifier>{93959875-5193-4ebc-92a4-971b24738713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Parser\NodeAST">
+      <UniqueIdentifier>{7b98e5c5-97e0-4d1a-9ff3-6a231aabdc3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Parser\NodeAST">
+      <UniqueIdentifier>{31b7fff7-e7d8-4c8c-81be-7f5ef6bb7641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\File">
+      <UniqueIdentifier>{999a2df4-88fe-410e-ac2a-d694d97915d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\File\FileInputStream">
+      <UniqueIdentifier>{ca113267-67fb-4bcd-b980-e48a3bbdde2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\File">
+      <UniqueIdentifier>{7073f860-8924-4042-b89e-2546b0f8b035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\File\FileInputStream">
+      <UniqueIdentifier>{9eb25327-0646-4647-ad96-3a3f949a6ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\File\FileOutputStream">
+      <UniqueIdentifier>{c9f582d1-a4ef-436b-8b71-659b59a3503c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\File\FileOutputStream">
+      <UniqueIdentifier>{e0bca940-f3b8-4576-90e3-3263e25638c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +105,33 @@
     <ClCompile Include="lexical_grammar.cpp">
       <Filter>Исходные файлы\Lexer</Filter>
     </ClCompile>
+    <ClCompile Include="concrete_ast.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="node_ast.cpp">
+      <Filter>Исходные файлы\Parser\NodeAST</Filter>
+    </ClCompile>
+    <ClCompile Include="stdfileInputStream.cpp">
+      <Filter>Исходные файлы\File\FileInputStream</Filter>
+    </ClCompile>
+    <ClCompile Include="file_stream.cpp">
+      <Filter>Исходные файлы\File</Filter>
+    </ClCompile>
+    <ClCompile Include="stdfileOutputStream.cpp">
+      <Filter>Исходные файлы\File\FileOutputStream</Filter>
+    </ClCompile>
+    <ClCompile Include="fileOutputStream.cpp">
+      <Filter>Исходные файлы\File\FileOutputStream</Filter>
+    </ClCompile>
+    <ClCompile Include="fileInputStream.cpp">
+      <Filter>Исходные файлы\File\FileInputStream</Filter>
+    </ClCompile>
+    <ClCompile Include="pasrer.cpp">
+      <Filter>Исходные файлы\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="ast.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lexer.h">
@@ -100,6 +163,36 @@
     </ClInclude>
     <ClInclude Include="ListTokens.h">
       <Filter>Файлы заголовков\Token\ContainerTokens</Filter>
+    </ClInclude>
+    <ClInclude Include="pasrer.h">
+      <Filter>Файлы заголовков\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="ast.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="concrete_ast.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="node_ast.h">
+      <Filter>Файлы заголовков\Parser\NodeAST</Filter>
+    </ClInclude>
+    <ClInclude Include="file_stream.h">
+      <Filter>Файлы заголовков\File</Filter>
+    </ClInclude>
+    <ClInclude Include="fileInputStream.h">
+      <Filter>Файлы заголовков\File\FileInputStream</Filter>
+    </ClInclude>
+    <ClInclude Include="stdfileInputStream.h">
+      <Filter>Файлы заголовков\File\FileInputStream</Filter>
+    </ClInclude>
+    <ClInclude Include="fileOutputStream.h">
+      <Filter>Файлы заголовков\File\FileOutputStream</Filter>
+    </ClInclude>
+    <ClInclude Include="stdfileOutputStream.h">
+      <Filter>Файлы заголовков\File\FileOutputStream</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIOStreamType.h">
+      <Filter>Файлы заголовков\File</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

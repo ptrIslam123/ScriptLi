@@ -123,24 +123,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ast.cpp" />
     <ClCompile Include="base_token.cpp" />
+    <ClCompile Include="concrete_ast.cpp" />
     <ClCompile Include="container.cpp" />
+    <ClCompile Include="fileInputStream.cpp" />
+    <ClCompile Include="fileOutputStream.cpp" />
+    <ClCompile Include="file_stream.cpp" />
     <ClCompile Include="grammar.cpp" />
     <ClCompile Include="lexer.cpp" />
     <ClCompile Include="lexical_grammar.cpp" />
     <ClCompile Include="ListTokens.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="node_ast.cpp" />
+    <ClCompile Include="pasrer.cpp" />
+    <ClCompile Include="stdfileInputStream.cpp" />
+    <ClCompile Include="stdfileOutputStream.cpp" />
     <ClCompile Include="test_token_type.cpp" />
     <ClCompile Include="token.cpp" />
     <ClCompile Include="vector_tokens.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ast.h" />
     <ClInclude Include="base_token.h" />
+    <ClInclude Include="concrete_ast.h" />
     <ClInclude Include="container.h" />
+    <ClInclude Include="fileInputStream.h" />
+    <ClInclude Include="FileIOStreamType.h" />
+    <ClInclude Include="fileOutputStream.h" />
+    <ClInclude Include="file_stream.h" />
     <ClInclude Include="grammar.h" />
     <ClInclude Include="lexer.h" />
     <ClInclude Include="lexical_grammar.h" />
     <ClInclude Include="ListTokens.h" />
+    <ClInclude Include="node_ast.h" />
+    <ClInclude Include="pasrer.h" />
+    <ClInclude Include="stdfileInputStream.h" />
+    <ClInclude Include="stdfileOutputStream.h" />
     <ClInclude Include="test_token_type.h" />
     <ClInclude Include="token.h" />
     <ClInclude Include="token_type.h" />
