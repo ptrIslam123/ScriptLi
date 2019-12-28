@@ -15,10 +15,12 @@
 
 #include "pasrer.h"
 #include "ast.h"
-#include "concrete_ast.h"
 
+#include "binary_expr.h"
 
 #include "node_ast.h"
+
+#include "allocator.h"
 
 #define FILE_NAME "script.txt"
 
@@ -27,20 +29,34 @@ void fileOutputStream();
 void fileInputStream();
 
 
+class Widget
+{
+public:
+	Widget(int x, short y)
+	{
+		x_ = x;
+		y_ = y;
+	}
+
+	int getX() { return x_; }
+	short getY() { return y_; }
+
+private:
+	int x_;
+	short y_;
+};
+
+
 int main()
 {
-	std::string data = "10 + 20";
-	BaseAST::Container_ptr tokens = createLex(data);
+	std::string data = "10 + 2 * 3/2 + 13";
 
-	AST* baseAST = new BaseAST(std::move(tokens));
+	Allocator<NodeAST> allocatorNodeAST;
+	auto tokens_container = createLex(data);	// get tokens;
 
-	baseAST->build();
+	AST* bin_expr = new BinaryExpression(std::move(tokens_container),  allocatorNodeAST);
 
-	//baseAST->build();
-
-
-	//std::unique_ptr<AST> baseAST =  makeAST(TypeAST::BASE_AST, std::move(tokens));	//erorr destruct
-
+	NodeAST* header = bin_expr->build();
 
 	return 0;
 }

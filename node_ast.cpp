@@ -1,61 +1,49 @@
 #include "node_ast.h"
 
-using NodeAST_ptr = std::unique_ptr<NodeAST>;
-using Token_ptr = std::unique_ptr<Token>;
-
 NodeAST::NodeAST()
-	:loperand_(nullptr), roperand_(nullptr), value_(nullptr), type_(TokenType::UNDEFINE)
+	:type_(TokenType::UNDEFINE), value_(nullptr), loperand_(nullptr), roperand_(nullptr)
 {}
 
-NodeAST::NodeAST(Token_ptr&& value)
-	:loperand_(nullptr), roperand_(nullptr), value_(std::move(value)), type_(TokenType::UNDEFINE)
+NodeAST::NodeAST(const TokenType& type)
+	:type_(type), value_(nullptr), loperand_(nullptr), roperand_(nullptr)
 {}
+
+NodeAST* NodeAST::getLoperand()
+{
+	return loperand_;
+}
+
+NodeAST* NodeAST::getRoperand()
+{
+	return roperand_;
+}
+
+TokenType NodeAST::getType()
+{
+	return type_;
+}
+
+Token* NodeAST::getToken()
+{
+	return value_;
+}
+
+void NodeAST::setLoperand(NodeAST* loperand)
+{
+	loperand_ = loperand;
+}
+
+void NodeAST::setRoperand(NodeAST* roperand)
+{
+	roperand_ = roperand;
+}
 
 void NodeAST::setType(const TokenType& type)
 {
 	type_ = type;
 }
 
-void NodeAST::setToken(Token_ptr&& value)
+void NodeAST::setToken(Token* value)
 {
-	value_ = std::move(value);
-}
-
-void NodeAST::setLoperand(NodeAST_ptr&& loperand)
-{
-	loperand_ = std::move(loperand);
-}
-
-void NodeAST::setRoperand(NodeAST_ptr&& roperand)
-{
-	roperand_ = std::move(roperand);
-}
-
-NodeAST_ptr* const NodeAST::getLooperand_ptr()
-{
-	return &loperand_;
-}
-
-NodeAST_ptr* const NodeAST::getRoperand_ptr()
-{
-	return &roperand_;
-}
-
-bool NodeAST::is_null_Loperand() const
-{
-	if (loperand_ == nullptr)
-		return true;
-	return false;
-}
-
-bool NodeAST::is_null_Roperand() const
-{
-	if (roperand_ == nullptr)
-		return true;
-	return false;
-}
-
-Token_ptr* const NodeAST::getToken() 
-{
-	return &value_;
+	value_ = value;
 }

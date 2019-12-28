@@ -73,6 +73,12 @@
     <Filter Include="Исходные файлы\File\FileOutputStream">
       <UniqueIdentifier>{e0bca940-f3b8-4576-90e3-3263e25638c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Allocators">
+      <UniqueIdentifier>{465e2b36-3978-4c3d-819a-ffaece55e30b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Allocators">
+      <UniqueIdentifier>{c0f9955a-2401-4da7-8480-76dad520e026}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -105,9 +111,6 @@
     <ClCompile Include="lexical_grammar.cpp">
       <Filter>Исходные файлы\Lexer</Filter>
     </ClCompile>
-    <ClCompile Include="concrete_ast.cpp">
-      <Filter>Исходные файлы\Parser\AST</Filter>
-    </ClCompile>
     <ClCompile Include="node_ast.cpp">
       <Filter>Исходные файлы\Parser\NodeAST</Filter>
     </ClCompile>
@@ -130,6 +133,12 @@
       <Filter>Исходные файлы\Parser</Filter>
     </ClCompile>
     <ClCompile Include="ast.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="allocator.cpp">
+      <Filter>Исходные файлы\Allocators</Filter>
+    </ClCompile>
+    <ClCompile Include="binary_expr.cpp">
       <Filter>Исходные файлы\Parser\AST</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,9 +179,6 @@
     <ClInclude Include="ast.h">
       <Filter>Файлы заголовков\Parser\AST</Filter>
     </ClInclude>
-    <ClInclude Include="concrete_ast.h">
-      <Filter>Файлы заголовков\Parser\AST</Filter>
-    </ClInclude>
     <ClInclude Include="node_ast.h">
       <Filter>Файлы заголовков\Parser\NodeAST</Filter>
     </ClInclude>
@@ -193,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="FileIOStreamType.h">
       <Filter>Файлы заголовков\File</Filter>
+    </ClInclude>
+    <ClInclude Include="allocator.h">
+      <Filter>Файлы заголовков\Allocators</Filter>
+    </ClInclude>
+    <ClInclude Include="binary_expr.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

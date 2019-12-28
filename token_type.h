@@ -49,9 +49,16 @@ enum class TokenType
 
 	/* Contecst fruently grammar */
 	STMT,
-	EXPR,
+
+	INIT_LIST,
+	ARGS_LIST,
+
+
+	BIN_EXPR,
+	COND_EXPR,
 	TERM,
 	FACT,
+	ID,
 
 
 	EOI
