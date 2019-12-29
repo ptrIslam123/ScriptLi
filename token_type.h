@@ -53,7 +53,7 @@ enum class TokenType
 	INIT_LIST,
 	ARGS_LIST,
 
-
+	LOG_EXPR,
 	BIN_EXPR,
 	COND_EXPR,
 	TERM,

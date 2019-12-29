@@ -126,8 +126,8 @@
     <ClCompile Include="allocator.cpp" />
     <ClCompile Include="ast.cpp" />
     <ClCompile Include="base_token.cpp" />
-    <ClCompile Include="binary_expr.cpp" />
     <ClCompile Include="container.cpp" />
+    <ClCompile Include="expression_ast.cpp" />
     <ClCompile Include="fileInputStream.cpp" />
     <ClCompile Include="fileOutputStream.cpp" />
     <ClCompile Include="file_stream.cpp" />
@@ -148,8 +148,8 @@
     <ClInclude Include="allocator.h" />
     <ClInclude Include="ast.h" />
     <ClInclude Include="base_token.h" />
-    <ClInclude Include="binary_expr.h" />
     <ClInclude Include="container.h" />
+    <ClInclude Include="expression_ast.h" />
     <ClInclude Include="fileInputStream.h" />
     <ClInclude Include="FileIOStreamType.h" />
     <ClInclude Include="fileOutputStream.h" />

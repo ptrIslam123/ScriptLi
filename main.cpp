@@ -16,7 +16,7 @@
 #include "pasrer.h"
 #include "ast.h"
 
-#include "binary_expr.h"
+#include "expression_ast.h"
 
 #include "node_ast.h"
 
@@ -49,12 +49,12 @@ private:
 
 int main()
 {
-	std::string data = "10 + 2 * 3/2 + 13";
+	std::string data = "10 > 2 + 1*3";
 
 	Allocator<NodeAST> allocatorNodeAST;
 	auto tokens_container = createLex(data);	// get tokens;
 
-	AST* bin_expr = new BinaryExpression(std::move(tokens_container),  allocatorNodeAST);
+	AST* bin_expr = new Expression(std::move(tokens_container),  allocatorNodeAST);
 
 	NodeAST* header = bin_expr->build();
 

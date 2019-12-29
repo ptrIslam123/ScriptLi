@@ -138,7 +138,7 @@
     <ClCompile Include="allocator.cpp">
       <Filter>Исходные файлы\Allocators</Filter>
     </ClCompile>
-    <ClCompile Include="binary_expr.cpp">
+    <ClCompile Include="expression_ast.cpp">
       <Filter>Исходные файлы\Parser\AST</Filter>
     </ClCompile>
   </ItemGroup>
@@ -203,7 +203,7 @@
     <ClInclude Include="allocator.h">
       <Filter>Файлы заголовков\Allocators</Filter>
     </ClInclude>
-    <ClInclude Include="binary_expr.h">
+    <ClInclude Include="expression_ast.h">
       <Filter>Файлы заголовков\Parser\AST</Filter>
     </ClInclude>
   </ItemGroup>
