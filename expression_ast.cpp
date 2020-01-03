@@ -5,18 +5,26 @@
 #define getLoperand root->getLoperand()
 #define getRoperand root->getRoperand()
 
-Expression::Expression(std::unique_ptr<Container>&& container, const Allocator<NodeAST>& allocator)
-	:container_(std::move(container)), 
-	allocator_(allocator),
-	current_pos_(0), 
-	length_container_(container_->size())
+
+
+/*
+	stmt ->			log_expr | e;
+	log_expr ->		cond_expr {&&,...} log_expr | cond_expr;
+	cond_expr ->	bin_expr {>,...} cond_expr | bin_expr;
+	bin_expr ->		term {+,...} bin_expr | term;
+	term ->			fact {*,...} term | fact;
+	fact ->			id {INT,...} | (log_expr);
+*/
+
+
+Expression::Expression(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
+	:BaseASTFunctionality(container, allocator, position),
+	allocator_(allocator)
 {}
 
-Expression::Expression(std::unique_ptr<Container>&& container, Allocator<NodeAST>&& allocator)
-	:container_(std::move(container)),
-	allocator_(std::move(allocator)),
-	current_pos_(0),
-	length_container_(container_->size())
+Expression::Expression(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
+	:BaseASTFunctionality(container, std::move(allocator), position),
+	allocator_(std::move(allocator))
 {}
 
 Expression::~Expression()
@@ -140,29 +148,6 @@ void Expression::fact_t(NodeAST* root)
 	}
 }
 
-TokenType Expression::getType(const size_t position) const
-{
-	return getToken(position)->getType();
-}
-
-Token* Expression::getToken(const size_t position_relative) const
-{
-	size_t position = position_relative + current_pos_;
-	if (position >= length_container_)
-		return nullptr;
-	return container_->get(position);
-}
-
-NodeAST* Expression::allocNode(TokenType&& type)
-{
-	return allocator_.alloc(std::move(type));
-}
-
-NodeAST* Expression::allocNode(const TokenType& type)
-{
-	return allocator_.alloc(type);
-}
-
 bool Expression::isId(const TokenType& type) const
 {
 	for (size_t i = 0; i < SIZE_ID; i++)
@@ -196,37 +181,21 @@ bool Expression::isCondOperator(const TokenType& type) const
 
 bool Expression::isBinaryOperator(const TokenType& type) const
 {
-	if (type == TokenType::MULT || type == TokenType::DIV)
-		return true;
-	return false;
+	return type == TokenType::MULT || type == TokenType::DIV;
 }
 
 bool Expression::isUnaryOperator(const TokenType& type) const
 {
-	if (type == TokenType::ADD || type == TokenType::SUB)
-		return true;
-	return false;
+	return type == TokenType::ADD || type == TokenType::SUB;
 }
 
 bool Expression::isLQ(const TokenType& type) const
 {
-	if (type == TokenType::LQ)
-	{
-		return true;
-	}
-	return false;
+	return type == TokenType::LQ;
 }
 
 bool Expression::isRQ(const TokenType& type) const
 {
-	if (type == TokenType::RQ)
-	{
-		return true;
-	}
-	return false;
+	return type == TokenType::RQ;
 }
 
-void Expression::next(const size_t offset)
-{
-	current_pos_ += offset;
-}

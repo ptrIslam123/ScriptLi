@@ -5,6 +5,10 @@
 #include "token_type.h"
 #include "lexical_grammar.h"
 
+#define KEY_WORDS 8
+#define ONCE_CHAR_OPERATORS 16
+#define TWO_CHAR_OPERATORS 4
+
 class Grammar : public LexicalGrammar
 {
 public:
@@ -39,19 +43,23 @@ private:
 	size_t countLine;
 
 	
-	std::string keyWords[2] = {"println","scanner"};
-	TokenType keyWords_type[2] = {TokenType::PRINTLN, TokenType::SCANNER};
-
-
-	char one_char_operator[12] = {'+','-','*','/','>','<','=','!','(',')','.',','};
-	std::string two_char_operator[12] = {">=","<=","==","!="};
-
-	TokenType once_char_operator_t[12] = {
-		TokenType::ADD,TokenType::SUB,TokenType::MULT,TokenType::DIV,TokenType::MORE,TokenType::LESS,
-		TokenType::EQULLY,TokenType::BUT,TokenType::LQ,TokenType::RQ,TokenType::POINT,TokenType::COMMA
+	std::string keyWords[KEY_WORDS] = {"print","scanner","dec","def","while", "struct","if","else"};
+	TokenType keyWords_type[KEY_WORDS] = {
+		TokenType::PRINT, TokenType::SCANNER, TokenType::DEC,TokenType::DEF,
+		TokenType::WHILE, TokenType::STRUCT, TokenType::IF, TokenType::ELSE
 	};
 
-	TokenType two_char_operator_t[12] = {
+
+	char one_char_operator[ONCE_CHAR_OPERATORS] = {'+','-','*','/','>','<','=','!','(',')','.',',' , '{','}','[',']'};
+	std::string two_char_operator[TWO_CHAR_OPERATORS] = {">=","<=","==","!="};
+
+	TokenType once_char_operator_t[ONCE_CHAR_OPERATORS] = {
+		TokenType::ADD,TokenType::SUB,TokenType::MULT,TokenType::DIV,TokenType::MORE,TokenType::LESS,
+		TokenType::EQULLY,TokenType::BUT,TokenType::LQ,TokenType::RQ,TokenType::POINT,TokenType::COMMA,
+		TokenType::SHAPE_LQ, TokenType::SHAPE_RQ, TokenType::L_SQUARE, TokenType::R_SQUARE
+	};
+
+	TokenType two_char_operator_t[TWO_CHAR_OPERATORS] = {
 		TokenType::MORE_EQ,TokenType::LESS_EQ,TokenType::EQ,TokenType::NO_EQ
 	};
 };

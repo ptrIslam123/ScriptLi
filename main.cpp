@@ -17,16 +17,16 @@
 #include "ast.h"
 
 #include "expression_ast.h"
+#include "declare_statement.h"
 
 #include "node_ast.h"
 
 #include "allocator.h"
 
-#define FILE_NAME "script.txt"
+#define FILE_NAME "main.txt"
 
 std::unique_ptr<Container> createLex(const std::string&);
-void fileOutputStream();
-void fileInputStream();
+std::string fileInputStream();
 
 
 class Widget
@@ -49,41 +49,42 @@ private:
 
 int main()
 {
-	std::string data = "10 > 2 + 1*3";
+	
 
-	Allocator<NodeAST> allocatorNodeAST;
-	auto tokens_container = createLex(data);	// get tokens;
+	std::string data = fileInputStream();
+	
+	auto tokens = createLex(data);
 
-	AST* bin_expr = new Expression(std::move(tokens_container),  allocatorNodeAST);
+//	test_show_tokens(tokens.get());
 
-	NodeAST* header = bin_expr->build();
+	Parser parser(tokens.get());
+
+	parser.run();
 
 	return 0;
 }
 
-void fileInputStream()
+std::string fileInputStream()
 {
-	std::string path = "file1.txt";
-	FileInputStream* fInStream = makeFileInputStream(path, FileIOStreamType::STDFileInputSTREAM);
+	std::string buffer;
+	std::fstream file;
+	file.open(FILE_NAME);
+	char data;
 
-	std::cout << fInStream->isExists() << "\n";
-
-	std::cout << fInStream->read() << "\n";
-}
-
-void fileOutputStream()
-{
-	std::string path = "file1.txt";
-	FileOutputStream* foutStream = makeFileOutputStream(path, FileIOStreamType::STDFileInputSTREAM);
-
-	if (!foutStream->isExists())
+	if (file.is_open())
 	{
-		std::cout << "!create file: " << path << "\n";
-		foutStream->createfile();
+		while (file.get(data))
+		{
+			buffer += data;
+		}
+		return buffer;
+	}
+	else
+	{
+		return "error: file not found!";
 	}
 
-	foutStream->write("test load data in file\n");
-
+	
 }
 
 std::unique_ptr<Container> createLex(const std::string& data)

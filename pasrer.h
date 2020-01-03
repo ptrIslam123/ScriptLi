@@ -2,20 +2,24 @@
 #define _PARSER_H_
 
 #include <iostream>
+#include "container.h"
 #include "ast.h"
 
 class Parser
 {
 public:
-	Parser(std::unique_ptr<AST>&&);
+	Parser(Container*);
 
 	void run();
+	NodeAST* getResult() const;
 
 private:
 
 
 private:
-	std::unique_ptr<AST> stmt_;
+	NodeAST* header;
+	std::unique_ptr<AST> stmt;
+	size_t position;
 };
 
 #endif // !_PARSER_H_

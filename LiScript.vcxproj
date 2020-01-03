@@ -124,48 +124,66 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="allocator.cpp" />
+    <ClCompile Include="argument_list.cpp" />
     <ClCompile Include="ast.cpp" />
+    <ClCompile Include="base_ast_functionality.cpp" />
     <ClCompile Include="base_token.cpp" />
     <ClCompile Include="container.cpp" />
+    <ClCompile Include="declare_statement.cpp" />
+    <ClCompile Include="define_statement.cpp" />
     <ClCompile Include="expression_ast.cpp" />
+    <ClCompile Include="fields_list.cpp" />
     <ClCompile Include="fileInputStream.cpp" />
     <ClCompile Include="fileOutputStream.cpp" />
     <ClCompile Include="file_stream.cpp" />
     <ClCompile Include="grammar.cpp" />
+    <ClCompile Include="initialized_lists.cpp" />
     <ClCompile Include="lexer.cpp" />
     <ClCompile Include="lexical_grammar.cpp" />
     <ClCompile Include="ListTokens.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="node_ast.cpp" />
     <ClCompile Include="pasrer.cpp" />
+    <ClCompile Include="statement_list.cpp" />
     <ClCompile Include="stdfileInputStream.cpp" />
     <ClCompile Include="stdfileOutputStream.cpp" />
+    <ClCompile Include="struct_statement.cpp" />
     <ClCompile Include="test_token_type.cpp" />
     <ClCompile Include="token.cpp" />
     <ClCompile Include="vector_tokens.cpp" />
+    <ClCompile Include="while_statement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allocator.h" />
+    <ClInclude Include="argument_list.h" />
     <ClInclude Include="ast.h" />
+    <ClInclude Include="base_ast_functionality.h" />
     <ClInclude Include="base_token.h" />
     <ClInclude Include="container.h" />
+    <ClInclude Include="declare_statement.h" />
+    <ClInclude Include="define_statement.h" />
     <ClInclude Include="expression_ast.h" />
+    <ClInclude Include="fields_list.h" />
     <ClInclude Include="fileInputStream.h" />
     <ClInclude Include="FileIOStreamType.h" />
     <ClInclude Include="fileOutputStream.h" />
     <ClInclude Include="file_stream.h" />
     <ClInclude Include="grammar.h" />
+    <ClInclude Include="initialized_lists.h" />
     <ClInclude Include="lexer.h" />
     <ClInclude Include="lexical_grammar.h" />
     <ClInclude Include="ListTokens.h" />
     <ClInclude Include="node_ast.h" />
     <ClInclude Include="pasrer.h" />
+    <ClInclude Include="statement_list.h" />
     <ClInclude Include="stdfileInputStream.h" />
     <ClInclude Include="stdfileOutputStream.h" />
+    <ClInclude Include="struct_statement.h" />
     <ClInclude Include="test_token_type.h" />
     <ClInclude Include="token.h" />
     <ClInclude Include="token_type.h" />
     <ClInclude Include="vector_tokens.h" />
+    <ClInclude Include="while_statement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

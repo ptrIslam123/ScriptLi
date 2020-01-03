@@ -7,6 +7,7 @@
 void test_show_tokens(Container* tokens)
 {
 	TEST_LOG("show_tokens");
+
 	size_t size = tokens->size();
 	Token* token = nullptr;
 
@@ -47,11 +48,21 @@ void test_printTokenType(const TokenType& type)
 	case TokenType::NO_EQ: PRINT_T("NO_EQ");
 	case TokenType::BUT: PRINT_T("BUT");
 	
+	case TokenType::SHAPE_LQ: PRINT_T("SHAPRE_LQ");
+	case TokenType::SHAPE_RQ: PRINT_T("SHAPE_RQ");
+	case TokenType::L_SQUARE: PRINT_T("L_SQUARE");
+	case TokenType::R_SQUARE: PRINT_T("R_SQUARE");
 
 	case TokenType::WORD: PRINT_T("WORD");
 
-	case TokenType::PRINTLN: PRINT_T("PRINTLN");
+	case TokenType::PRINT: PRINT_T("PRINT");
 	case TokenType::SCANNER: PRINT_T("SCANNER");
+	case TokenType::STRUCT: PRINT_T("STRUCT");
+	case TokenType::DEC: PRINT_T("DEC");
+	case TokenType::DEF: PRINT_T("DEF");
+	case TokenType::WHILE: PRINT_T("WHILE");
+	case TokenType::IF: PRINT_T("IF");
+	case TokenType::ELSE: PRINT_T("ELSE");
 
 	case TokenType::EOI: PRINT_T("EOI");
 

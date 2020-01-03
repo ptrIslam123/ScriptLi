@@ -2,6 +2,7 @@
 #define _AST_H_
 
 #include "node_ast.h"
+#include <iostream>
 
 class AST
 {

@@ -141,6 +141,33 @@
     <ClCompile Include="expression_ast.cpp">
       <Filter>Исходные файлы\Parser\AST</Filter>
     </ClCompile>
+    <ClCompile Include="base_ast_functionality.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="declare_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="statement_list.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="argument_list.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="define_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="initialized_lists.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="while_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="struct_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="fields_list.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lexer.h">
@@ -204,6 +231,33 @@
       <Filter>Файлы заголовков\Allocators</Filter>
     </ClInclude>
     <ClInclude Include="expression_ast.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="declare_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="base_ast_functionality.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="define_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="initialized_lists.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="argument_list.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="statement_list.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="while_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="struct_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="fields_list.h">
       <Filter>Файлы заголовков\Parser\AST</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,18 +3,19 @@
 
 #include <iostream>
 #include "ast.h"
+#include "base_ast_functionality.h"
 #include "allocator.h"
 #include "container.h"
 
-#define SIZE_ID 5
+#define SIZE_ID 6
 #define SIZE_LOG_OPERATOR 4
 #define SIZE_COND_OPERATOR 6
 
-class Expression : public AST
+class Expression : public AST, BaseASTFunctionality
 {
 public:
-	Expression(std::unique_ptr<Container>&&, const Allocator<NodeAST>&);
-	Expression(std::unique_ptr<Container>&&, Allocator<NodeAST>&&);
+	Expression(Container*, const Allocator<NodeAST>&, size_t&);
+	Expression(Container*, Allocator<NodeAST>&&, size_t&);
 	~Expression();
 
 	virtual NodeAST* build() override;
@@ -25,13 +26,6 @@ public:
 	void term_t(NodeAST*);
 	void fact_t(NodeAST*);
 
-private:
-	TokenType getType(const size_t) const;
-
-	Token* getToken(const size_t) const;
-	NodeAST* allocNode(TokenType&&);
-	NodeAST* allocNode(const TokenType&);
-
 	bool isId(const TokenType&) const;
 	bool isLogOperator(const TokenType&) const;
 	bool isCondOperator(const TokenType&) const;
@@ -40,11 +34,9 @@ private:
 	bool isLQ(const TokenType&) const;
 	bool isRQ(const TokenType&) const;
 
-	void next(const size_t);
-
-
 private:
 	TokenType idTypes[SIZE_ID] = {
+		TokenType::WORD,
 		TokenType::NUMBER_DOUBLE, TokenType::NUMBER_INT,
 		TokenType::TEXT, TokenType::CHAR, TokenType::BOOL
 	};
@@ -59,10 +51,7 @@ private:
 		TokenType::LESS, TokenType::MORE_EQ,
 		TokenType::LESS_EQ, TokenType::EQ
 	};
-
-	std::unique_ptr<Container> container_;
 	Allocator<NodeAST> allocator_;
-	size_t current_pos_, length_container_;
 };
 
 #endif // !_EXPR_AST_H_

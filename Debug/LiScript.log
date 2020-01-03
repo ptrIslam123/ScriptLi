@@ -1,1 +1,4 @@
-﻿  LiScript.vcxproj -> E:\CppProgarams\MVS\TLP_LiScript\LiScript\LiScript\Debug\LiScript.exe
+﻿  while_statement.cpp
+E:\CppProgarams\MVS\TLP_LiScript\LiScript\LiScript\LiScript\allocator.h(10,1): warning C4005: LOG: изменение макроопределения
+E:\CppProgarams\MVS\smart_popinters\smart_pointers\smart_pointers\deleter_default.h(4): message : см. предыдущее определение "LOG"
+  LiScript.vcxproj -> E:\CppProgarams\MVS\TLP_LiScript\LiScript\LiScript\Debug\LiScript.exe

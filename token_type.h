@@ -14,9 +14,14 @@ enum class TokenType
 
 	/* key words */
 	WORD,
-	PRINTLN,
+	PRINT,
 	SCANNER,
 	STRUCT,
+
+	WHILE,
+	IF,
+	ELSE,
+
 
 	NODE,
 
@@ -28,8 +33,12 @@ enum class TokenType
 	MULT,		// *
 	DIV,		// /
 	
-	LQ,		// (
-	RQ,		// )
+	LQ,			// (
+	RQ,			// )
+	SHAPE_LQ,	// {
+	SHAPE_RQ,	// }
+	L_SQUARE,	// [
+	R_SQUARE,	// ]
 
 	POINT,		// .
 	COMMA,		// ,
@@ -47,9 +56,16 @@ enum class TokenType
 	OR,			// ||
 
 
+
 	/* Contecst fruently grammar */
 	STMT,
 
+	DEC, // declare
+	DEF,	// define
+
+
+	FIELD_LIST,
+	STMT_LIST,
 	INIT_LIST,
 	ARGS_LIST,
 
