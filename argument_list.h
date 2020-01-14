@@ -15,12 +15,13 @@ public:
 	ArgumentList(Container*, Allocator<NodeAST>&&, size_t&);
 
 	virtual NodeAST* build() override;
-	void args_list_t(NodeAST*);
-	bool isExpre(const TokenType&) const;
+	bool isExpr(const TokenType&) const;
 	bool isRQ(const TokenType&) const;
+	bool isComma(const TokenType&) const;
+	bool isShapeLQ(const TokenType&) const;
 
 private:
-	inline void isComma(const TokenType&, NodeAST*);
+	void args_list_t(NodeAST*, bool LQ = false);
 
 private:
 	AST_ptr expr;

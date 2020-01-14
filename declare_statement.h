@@ -16,7 +16,6 @@ public:
 
 	virtual NodeAST* build() override;
 	void dec_t(NodeAST*);
-	void equality_t(NodeAST*);
 	bool isExpr(const TokenType&) const;
 	bool isInit_list(const TokenType&) const;
 

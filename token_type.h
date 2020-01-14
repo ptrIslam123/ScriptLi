@@ -21,7 +21,7 @@ enum class TokenType
 	WHILE,
 	IF,
 	ELSE,
-
+	RET,
 
 	NODE,
 
@@ -59,12 +59,16 @@ enum class TokenType
 
 	/* Contecst fruently grammar */
 	STMT,
-
+	EXPR,
+	ACCESS_ELEMENT,	// []
 	DEC, // declare
 	DEF,	// define
+	LVALUE,
+	RVALUE,
+	CALL,
 
-
-	FIELD_LIST,
+	PARAMS_LIST,
+	FIELDS_LIST,
 	STMT_LIST,
 	INIT_LIST,
 	ARGS_LIST,
@@ -75,6 +79,7 @@ enum class TokenType
 	TERM,
 	FACT,
 	ID,
+	MATCHER,
 
 
 	EOI

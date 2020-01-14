@@ -1,6 +1,7 @@
 #ifndef _LEXICAL_GRAMMAR_H_
 #define _LEXICAL_GRAMMAR_H_
 
+#include <iostream>
 #include "token.h"
 
 enum class GrammarType
@@ -28,8 +29,8 @@ public:
 };
 
 
-LexicalGrammar* makeLexicalGrammar(const GrammarType&, const std::string&);
-LexicalGrammar* makeLexicalGrammar(GrammarType&&, std::string&&);
+std::unique_ptr<LexicalGrammar>&& makeLexicalGrammar(const GrammarType&, const std::string&);
+std::unique_ptr<LexicalGrammar>&& makeLexicalGrammar(GrammarType&&, std::string&&);
 
 
 #endif // !_LEXICAL_GRAMMAR_H_

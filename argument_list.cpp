@@ -22,52 +22,59 @@ NodeAST* ArgumentList::build()
 {
 	NodeAST* args_list = allocNode(TokenType::ARGS_LIST);
 	next(1);
-	if (isRQ(getType(0)))
-	{
-		next(1);
-		return args_list;
-	}
-	args_list_t(args_list);
+	args_list_t(args_list, true);
 	return args_list;
 }
 
-void ArgumentList::args_list_t(NodeAST* root)
+void ArgumentList::args_list_t(NodeAST* root, bool LQ)
 {
-	if ( isExpre(getType(0)) )
+	if ( isExpr(getType(0)) )
 	{
-		root->setLoperand( expr->build() );		/* args_list -> expr; (args_list -> expr comma args_list) */
-		if (isRQ(getType(0)))
+		root->setLoperand(expr->build());
+		if ( isComma(getType(0)) )
 		{
+			root->setToken(getToken(0));
 			next(1);
+
+			root->setRoperand(allocNode(TokenType::ARGS_LIST));
+			args_list_t(root->getRoperand());
+		}
+		if ( isRQ(getType(0)) )
+		{
+			if (LQ)
+			{
+				next(1);
+			}
 			return;
 		}
-		isComma(getType(0), root);
-		root->setRoperand(allocNode(TokenType::ARGS_LIST));
-		args_list_t(root->getRoperand());
+		else 
+		{
+			throw "synatx error";
+		}
 	}
 	else
 	{
-		throw "syntax error(args_list)";
+		throw "synatxx error";
 	}
 }
 
-bool ArgumentList::isExpre(const TokenType& type) const
+inline bool ArgumentList::isExpr(const TokenType& type) const
 {
 	auto expression = static_cast<Expression*>(expr.get());
 	return type == TokenType::LQ || expression->isId(type);
 }
 
-bool ArgumentList::isRQ(const TokenType& type) const
+inline bool ArgumentList::isRQ(const TokenType& type) const
 {
 	return type == TokenType::RQ;
 }
 
-
-inline void ArgumentList::isComma(const TokenType& type, NodeAST* root)
+inline bool ArgumentList::isComma(const TokenType& type) const
 {
-	if (type == TokenType::COMMA)
-	{
-		root->setToken(getToken(0));
-		next(1);
-	}
+	return type == TokenType::COMMA;
+}
+
+bool ArgumentList::isShapeLQ(const TokenType& type) const
+{
+	return type == TokenType::SHAPE_LQ;
 }

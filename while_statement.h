@@ -22,7 +22,7 @@ private:
 	void while_t(NodeAST*);
 
 private:
-	AST_ptr stmt_list;
+	AST_ptr body_loop;
 	AST_ptr expr;
 };
 

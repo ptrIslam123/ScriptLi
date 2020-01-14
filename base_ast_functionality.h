@@ -21,7 +21,8 @@ protected:
 	std::string getValue(const size_t) const;
 	Token* getToken(const size_t) const;
 	void next(const size_t);
-	void even(const TokenType&, const TokenType&, const size_t offset = 0);
+	void even(const TokenType&, const TokenType&, const size_t offset);
+	void even(const TokenType&, const TokenType&) const;
 
 private:
 	Container* container_;

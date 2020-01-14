@@ -17,10 +17,13 @@ public:
 	virtual NodeAST* build() override;
 	bool isExpr(const TokenType&) const;
 	bool isInit_list(const TokenType&) const;
+	bool isShapeRQ(const TokenType&) const;
 	bool isComma(const TokenType&) const;
 
 private:
 	void init_list_t(NodeAST*, bool isShapeLQ = false);
+	void expr_production(NodeAST*, bool isLQ = false);
+	void init_list_production(NodeAST*);
 
 private:
 	AST_ptr expr;

@@ -63,6 +63,7 @@ void test_printTokenType(const TokenType& type)
 	case TokenType::WHILE: PRINT_T("WHILE");
 	case TokenType::IF: PRINT_T("IF");
 	case TokenType::ELSE: PRINT_T("ELSE");
+	case TokenType::RET: PRINT_T("RET");
 
 	case TokenType::EOI: PRINT_T("EOI");
 

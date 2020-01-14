@@ -11,14 +11,16 @@
 class Lexer
 {
 public:
-	Lexer(const std::string&, LexicalGrammar*, Container*);
 	Lexer(
 		const std::string&, 
-		std::unique_ptr<LexicalGrammar>,
-		std::unique_ptr<Container>
+		std::unique_ptr<LexicalGrammar>&&, 
+		std::unique_ptr<Container>&&
 	);
-	Lexer(std::string&&, LexicalGrammar*, Container*);
-	~Lexer();
+	Lexer(
+		std::string&&,
+		std::unique_ptr<LexicalGrammar>&&,
+		std::unique_ptr<Container>&&
+	);
 
 	void run();
 
@@ -36,5 +38,17 @@ private:
 	std::string text_;
 };
 
+
+std::unique_ptr<Container>&& getResult_of_the_Lexer(
+	const std::string&,
+	GrammarType&&,
+	ContainerType&&
+);
+
+std::unique_ptr<Container>&& getResult_of_the_Lexer(
+	std::string&&,
+	std::unique_ptr<LexicalGrammar>&&,
+	std::unique_ptr<Container>&&
+);
 
 #endif // !_LEXER_H_

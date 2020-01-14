@@ -5,7 +5,7 @@
 #include "token_type.h"
 #include "lexical_grammar.h"
 
-#define KEY_WORDS 8
+#define KEY_WORDS 9
 #define ONCE_CHAR_OPERATORS 16
 #define TWO_CHAR_OPERATORS 4
 
@@ -43,10 +43,11 @@ private:
 	size_t countLine;
 
 	
-	std::string keyWords[KEY_WORDS] = {"print","scanner","dec","def","while", "struct","if","else"};
+	std::string keyWords[KEY_WORDS] = {"print","scanner","dec","def","while", "struct","if","else","return"};
 	TokenType keyWords_type[KEY_WORDS] = {
 		TokenType::PRINT, TokenType::SCANNER, TokenType::DEC,TokenType::DEF,
-		TokenType::WHILE, TokenType::STRUCT, TokenType::IF, TokenType::ELSE
+		TokenType::WHILE, TokenType::STRUCT, TokenType::IF, TokenType::ELSE,
+		TokenType::RET
 	};
 
 

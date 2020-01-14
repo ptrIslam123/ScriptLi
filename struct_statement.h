@@ -18,6 +18,7 @@ public:
 	bool isFileds_list(const TokenType&) const;
 
 private:
+	void struct_t(NodeAST*);
 
 private:
 	AST_ptr fields_list;

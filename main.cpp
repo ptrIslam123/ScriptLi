@@ -1,11 +1,6 @@
 #include <iostream>
-#include <list>
-#include <unordered_map>
 #include <fstream>
 
-#include "token.h"
-#include "lexical_grammar.h"
-#include "container.h"
 #include "lexer.h"
 
 #include "test_token_type.h"
@@ -16,10 +11,7 @@
 #include "pasrer.h"
 #include "ast.h"
 
-#include "expression_ast.h"
-#include "declare_statement.h"
 
-#include "node_ast.h"
 
 #include "allocator.h"
 
@@ -38,6 +30,8 @@ public:
 		y_ = y;
 	}
 
+	Widget() {}
+
 	int getX() { return x_; }
 	short getY() { return y_; }
 
@@ -49,17 +43,14 @@ private:
 
 int main()
 {
-	
 
 	std::string data = fileInputStream();
 	
-	auto tokens = createLex(data);
-
-//	test_show_tokens(tokens.get());
-
-	Parser parser(tokens.get());
-
-	parser.run();
+	auto tokens = getResult_of_the_Lexer(
+		std::move(data),
+		GrammarType::STD_GRAMMAR,
+		ContainerType::List 
+	);
 
 	return 0;
 }
@@ -89,13 +80,5 @@ std::string fileInputStream()
 
 std::unique_ptr<Container> createLex(const std::string& data)
 {
-	auto lexical = makeLexicalGrammar(GrammarType::STD_GRAMMAR, data);
-	Container* container = makeContainer(ContainerType::List, 0);
-
-
-	Lexer lexer(data, lexical, container);
-
-	lexer.run();
-
-	return lexer.getTokens();
+	return nullptr;
 }

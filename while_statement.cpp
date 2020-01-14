@@ -9,7 +9,7 @@
 WhileStatement::WhileStatement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	stmt_list = std::make_unique<StatementList>(container, allocator, position);
+	body_loop = std::make_unique<StatementList>(container, allocator, position);
 	expr = std::make_unique<Expression>(container, allocator, position);
 }
 
@@ -17,7 +17,7 @@ WhileStatement::WhileStatement(Container* container, const Allocator<NodeAST>& a
 WhileStatement::WhileStatement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	:BaseASTFunctionality(container, std::move(allocator), position)
 {
-	stmt_list = std::make_unique<StatementList>(container, std::move(allocator), position);
+	body_loop = std::make_unique<StatementList>(container, std::move(allocator), position);
 	expr = std::make_unique<Expression>(container, std::move(allocator), position);
 }
 
@@ -37,7 +37,7 @@ void WhileStatement::while_t(NodeAST* root)
 		root->setLoperand(expr->build());
 		if ( isStmt_list(getType(0)) )
 		{
-			root->setRoperand(stmt_list->build());
+			root->setRoperand(body_loop->build());
 		}
 		else
 		{

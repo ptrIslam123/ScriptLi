@@ -168,6 +168,27 @@
     <ClCompile Include="fields_list.cpp">
       <Filter>Исходные файлы\Parser\AST</Filter>
     </ClCompile>
+    <ClCompile Include="if_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="params_list_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="call_function_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="ret_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="lvalue_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="rvalue_statement.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lexer.h">
@@ -258,6 +279,27 @@
       <Filter>Файлы заголовков\Parser\AST</Filter>
     </ClInclude>
     <ClInclude Include="fields_list.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="if_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="params_list_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="call_function_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="ret_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="lvalue_statement.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="rvalue_statement.h">
       <Filter>Файлы заголовков\Parser\AST</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,11 +15,14 @@ public:
 	FieldsListStatement(Container*, Allocator<NodeAST>&&, size_t&);
 
 	virtual NodeAST* build() override;
+	bool isShapeRQ(const TokenType&) const;
+	bool isComma(const TokenType&) const;
+	bool isDec(const TokenType&) const;
 
 private:
-
+	void fields_list_t(NodeAST*, bool ShapeLQ = false);
 private:
-	AST_ptr expr;
+	AST_ptr dec;
 };
 
 #endif // !_FILEDS_LIS_STATEMENT_H_

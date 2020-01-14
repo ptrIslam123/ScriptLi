@@ -63,3 +63,11 @@ void BaseASTFunctionality::even(const TokenType& first_type, const TokenType& se
 	}
 }
 
+void BaseASTFunctionality::even(const TokenType& firstType, const TokenType& secondType) const
+{
+	if (firstType != secondType)
+	{
+		throw "syntax error: undefine token ";
+	}
+}
+
