@@ -188,6 +188,7 @@
     <ClInclude Include="pasrer.h" />
     <ClInclude Include="ret_statement.h" />
     <ClInclude Include="rvalue_statement.h" />
+    <ClInclude Include="singletonh.h" />
     <ClInclude Include="statement.h" />
     <ClInclude Include="statement_list.h" />
     <ClInclude Include="stdfileInputStream.h" />

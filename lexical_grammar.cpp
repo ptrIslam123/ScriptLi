@@ -4,21 +4,21 @@
 #define EXCEPTION(INF) std::cout << INF << "\n";	\
 						throw;						\
 
-std::unique_ptr<LexicalGrammar>&& makeLexicalGrammar(const GrammarType& grammarType, const std::string& text)
+LexicalGrammar* makeLexicalGrammar(const GrammarType& grammarType, const std::string& text)
 {
 	switch (grammarType)
 	{
-	case GrammarType::STD_GRAMMAR: return std::make_unique<Grammar>(text);
+	case GrammarType::STD_GRAMMAR: return new Grammar(text);
 		default:
 			EXCEPTION("undefine lexicalGrammar type")
 	}
 }
 
-std::unique_ptr<LexicalGrammar>&& makeLexicalGrammar(GrammarType&& grammarType, std::string&& text)
+LexicalGrammar* makeLexicalGrammar(GrammarType&& grammarType, std::string&& text)
 {
 	switch (grammarType)
 	{
-	case GrammarType::STD_GRAMMAR: return std::make_unique<Grammar>(text);
+	case GrammarType::STD_GRAMMAR: return new Grammar(std::move(text));
 		default:
 			EXCEPTION("undefine lexicalGrammar type")
 	}

@@ -12,13 +12,14 @@
 #include "ast.h"
 
 
-
+#include "singletonh.h"
 #include "allocator.h"
 
 #define FILE_NAME "main.txt"
 
 std::unique_ptr<Container> createLex(const std::string&);
 std::string fileInputStream();
+
 
 
 class Widget
@@ -29,29 +30,50 @@ public:
 		x_ = x;
 		y_ = y;
 	}
+	Widget()
+		:x_(0),y_(0)
+	{}
 
-	Widget() {}
+	void setX(int x) { x_ = x;  }
+	void setY(int y) { y_ = y;  }
 
 	int getX() { return x_; }
-	short getY() { return y_; }
+	int getY() { return y_; }
 
 private:
 	int x_;
-	short y_;
+	int y_;
+};
+auto factoryM = [](const TokenType&)
+{
+	return new Widget();
 };
 
 
 int main()
 {
 
-	std::string data = fileInputStream();
+	/*std::string data = fileInputStream();
 	
-	auto tokens = getResult_of_the_Lexer(
-		std::move(data),
-		GrammarType::STD_GRAMMAR,
-		ContainerType::List 
-	);
+	auto container = makeContainer(ContainerType::List,0);
+	auto lexical = makeLexicalGrammar(GrammarType::STD_GRAMMAR, data);
 
+	Lexer lexer(data, lexical, container);
+	lexer.run();
+
+	auto tokens = lexer.getTokens();*/
+
+	Singleton<Widget,TokenType, decltype(factoryM)> r(factoryM);
+
+	Widget*  w1 = r.getBeen(TokenType::ADD);
+	w1->setX(1010);
+	w1->setY(2020);
+
+	printf("w1 = {x1 = %d, y= %d}\n", w1->getX(), w1->getY());
+
+
+	Widget* w2 = r.getBeen(TokenType::MULT);
+	printf("w2 = {x1 = %d, y= %d}\n", w2->getX(), w2->getY());
 	return 0;
 }
 

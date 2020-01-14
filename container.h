@@ -27,7 +27,7 @@ public:
 };
 
 
-std::unique_ptr<Container>&& makeContainer(const ContainerType&, const size_t);
-std::unique_ptr<Container>&& makeContainer(ContainerType&&, const size_t);
+Container* makeContainer(const ContainerType&, const size_t);
+Container* makeContainer(ContainerType&&, const size_t);
 
 #endif // !_CONTAINER_H_

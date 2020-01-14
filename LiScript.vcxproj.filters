@@ -79,6 +79,9 @@
     <Filter Include="Исходные файлы\Allocators">
       <UniqueIdentifier>{c0f9955a-2401-4da7-8480-76dad520e026}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Utilities">
+      <UniqueIdentifier>{8a69d73b-1a37-41e3-b74a-27fd99e59591}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -301,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="rvalue_statement.h">
       <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="singletonh.h">
+      <Filter>Файлы заголовков\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

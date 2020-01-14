@@ -12,14 +12,15 @@ class Lexer
 {
 public:
 	Lexer(
-		const std::string&, 
-		std::unique_ptr<LexicalGrammar>&&, 
-		std::unique_ptr<Container>&&
+		const std::string&,
+		LexicalGrammar*,
+		Container*
 	);
+
 	Lexer(
 		std::string&&,
-		std::unique_ptr<LexicalGrammar>&&,
-		std::unique_ptr<Container>&&
+		LexicalGrammar*,
+		Container*
 	);
 
 	void run();

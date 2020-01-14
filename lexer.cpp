@@ -1,25 +1,12 @@
 #include "lexer.h"
 
-Lexer::Lexer(
-	const std::string& text,
-	std::unique_ptr<LexicalGrammar>&& lexical, 
-	std::unique_ptr<Container>&& container
-)
-	:text_(text), 
-	lexical_(std::move(lexical)), 
-	tokens(std::move(container))
+Lexer::Lexer(const std::string& text, LexicalGrammar* lexical, Container* container)
+	:text_(text), lexical_ (lexical), tokens(container)
 {}
 
-Lexer::Lexer(
-	std::string&& text,
-	std::unique_ptr<LexicalGrammar>&& lexical,
-	std::unique_ptr<Container>&& container
-)
-	: text_(std::move(text)),
-	lexical_(std::move(lexical)),
-	tokens(std::move(container))
+Lexer::Lexer(std::string&& text, LexicalGrammar* lexical, Container* container)
+	: text_(std::move(text)), lexical_(lexical), tokens(container)
 {}
-
 
 void Lexer::run()
 {
@@ -111,36 +98,3 @@ std::unique_ptr<LexicalGrammar> Lexer::getLexicalGrammar()
 	return std::move(lexical_);
 }
 
-std::unique_ptr<Container>&& 
-getResult_of_the_Lexer(
-	const std::string& data, 
-	GrammarType&& lexical_type,
-	ContainerType&& container_type
-)
-{
-	Lexer lexer(
-		data, 
-		makeLexicalGrammar(std::move(lexical_type),data),
-		makeContainer(std::move(container_type),0)
-	);
-
-	lexer.run();
-	return std::move( lexer.getTokens() );
-}
-
-std::unique_ptr<Container>&&
-getResult_of_the_Lexer(
-	std::string&& data,
-	GrammarType&& lexical_type,
-	ContainerType&& container_type
-)
-{
-	Lexer lexer(
-		std::move(data),
-		makeLexicalGrammar(std::move(lexical_type), std::move(data)),
-		makeContainer(std::move(container_type), 0)
-	);
-
-	lexer.run();
-	return std::move(lexer.getTokens());
-}

@@ -29,8 +29,8 @@ public:
 };
 
 
-std::unique_ptr<LexicalGrammar>&& makeLexicalGrammar(const GrammarType&, const std::string&);
-std::unique_ptr<LexicalGrammar>&& makeLexicalGrammar(GrammarType&&, std::string&&);
+LexicalGrammar* makeLexicalGrammar(const GrammarType&, const std::string&);
+LexicalGrammar* makeLexicalGrammar(GrammarType&&, std::string&&);
 
 
 #endif // !_LEXICAL_GRAMMAR_H_
