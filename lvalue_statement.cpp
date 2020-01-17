@@ -11,13 +11,13 @@
 LvalueStatement::LvalueStatement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	rvalue = std::make_unique<RvalueStatement>(container, allocator ,position);
+	rvalue = makeAST(ASTClassType::RVALUE, container, allocator ,position);
 }
 
 LvalueStatement::LvalueStatement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	: BaseASTFunctionality(container, std::move(allocator), position)
 {
-	rvalue = std::make_unique<RvalueStatement>(container, std::move(allocator), position);
+	rvalue = makeAST(ASTClassType::RVALUE, container, std::move(allocator), position);
 }
 
 NodeAST* LvalueStatement::build()
@@ -91,7 +91,7 @@ inline void LvalueStatement::setEqulyy_t(NodeAST* root)
 
 inline bool LvalueStatement::isExpr(const TokenType& type) const
 {
-	return static_cast<RvalueStatement*>(rvalue.get())->isExpr(type);
+	return static_cast<RvalueStatement*>(rvalue)->isExpr(type);
 }
 
 inline bool LvalueStatement::isWord(const TokenType& type) const

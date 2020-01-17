@@ -10,15 +10,15 @@
 DefineStatement::DefineStatement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	params_list = std::make_unique<ParamsListStatement>(container, allocator, position);
-	body_func = std::make_unique<StatementList>(container, allocator, position);
+	params_list =makeAST(ASTClassType::PARAMS_LIST, container, allocator, position);
+	body_func = makeAST(ASTClassType::STMT_LIST, container, allocator, position);
 }
 
 DefineStatement::DefineStatement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	: BaseASTFunctionality(container, std::move(allocator), position)
 {
-	params_list = std::make_unique<ParamsListStatement>(container, std::move(allocator), position);
-	body_func = std::make_unique<StatementList>(container, std::move(allocator), position);
+	params_list = makeAST(ASTClassType::PARAMS_LIST, container, std::move(allocator), position);
+	body_func = makeAST(ASTClassType::STMT_LIST, container, std::move(allocator), position);
 }
 
 NodeAST* DefineStatement::build()

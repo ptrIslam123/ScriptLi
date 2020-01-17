@@ -9,7 +9,6 @@
 
 class ReturnStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	ReturnStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	ReturnStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -22,7 +21,7 @@ private:
 	void ret_t(NodeAST*);
 
 private:
-	AST_ptr expr;
+	AST* expr;
 };
 
 #endif // !_RET_STATEMENT_H_

@@ -9,13 +9,13 @@
 StatementList::StatementList(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	stmt = std::make_unique<Statement>(container, allocator, position);
+	stmt = makeAST(ASTClassType::STMT, container, allocator, position);
 }
 
 StatementList::StatementList(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	:BaseASTFunctionality(container, std::move(allocator), position)
 {
-	stmt = std::make_unique<Statement>(container, std::move(allocator), position);
+	stmt = makeAST(ASTClassType::STMT, container, std::move(allocator), position);
 }
 
 NodeAST* StatementList::build()

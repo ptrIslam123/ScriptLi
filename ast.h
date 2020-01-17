@@ -5,11 +5,8 @@
 #include "allocator.h"
 #include "container.h"
 
-class AST
-{
-public:
-	virtual NodeAST* build() = 0;
-};
+#define makeAST(AST_CLASS_TYPE,CONTAINER,ALLOCATOR,POSITION)														\
+															getBeen(AST_CLASS_TYPE, CONTAINER, ALLOCATOR, POSITION)	\
 
 enum class ASTClassType
 {
@@ -28,11 +25,24 @@ enum class ASTClassType
 	FIELDS_LIST,
 	RET,
 	PARAMS_LIST,
-	CALL
+	CALL,
+		
+	AST_TEST
 };
 
+class AST
+{
+public:
+	virtual NodeAST* build() = 0;
+};
 
-AST* makeASTunit(const ASTClassType&, Container*, Allocator<NodeAST>&&, size_t&);
-AST* makeASTunit(const ASTClassType&, Container*, const Allocator<NodeAST>&, size_t&);
+AST* getBeen(const ASTClassType& type, Container* container, const Allocator<NodeAST>& allocator, size_t& position);
+AST* getBeen(const ASTClassType& type, Container* container, Allocator<NodeAST>&& allocator, size_t& position);
+
+AST* makeASTunit(const ASTClassType& type, Container* container, const Allocator<NodeAST>& allocator, size_t& position);
+AST* makeASTunit(const ASTClassType& type, Container* container, Allocator<NodeAST>&& allocator, size_t& position);
+
+
+
 
 #endif // !_AST_H_

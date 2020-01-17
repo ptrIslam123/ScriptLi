@@ -12,8 +12,8 @@
 DeclareStatement::DeclareStatement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	expr = std::make_unique<Expression>(container, allocator, position);
-	init_list = std::make_unique<InitializedList>(container, allocator, position);
+	expr = makeAST(ASTClassType::RVALUE, container, allocator, position);
+	init_list = makeAST(ASTClassType::INIT_LIST, container, allocator, position);
 }
 
 
@@ -21,8 +21,8 @@ DeclareStatement::DeclareStatement(Container* container, const Allocator<NodeAST
 DeclareStatement::DeclareStatement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	expr = std::make_unique<Expression>( container, std::move(allocator), position );
-	init_list = std::make_unique<InitializedList>( container, std::move(allocator), position );
+	expr = makeAST(ASTClassType::RVALUE, container, allocator, position);
+	init_list = makeAST(ASTClassType::INIT_LIST, container, allocator, position);
 }
 
 NodeAST* DeclareStatement::build()
@@ -62,7 +62,8 @@ void DeclareStatement::dec_t(NodeAST* root)
 
 bool DeclareStatement::isExpr(const TokenType& type) const
 {
-	auto expression = static_cast<Expression*>(expr.get());
+	/*auto expression = static_cast<Expression*>(expr.get());*/
+	auto expression = static_cast<Expression*>(expr);
 	return type == TokenType::LQ || expression->isId(type);
 }
 

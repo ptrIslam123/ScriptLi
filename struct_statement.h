@@ -9,7 +9,6 @@
 
 class StructStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	StructStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	StructStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -21,7 +20,7 @@ private:
 	void struct_t(NodeAST*);
 
 private:
-	AST_ptr fields_list;
+	AST* fields_list;
 };
 
 #endif // !_STRUCT_STATEMENT_H_

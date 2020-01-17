@@ -192,6 +192,12 @@
     <ClCompile Include="rvalue_statement.cpp">
       <Filter>Исходные файлы\Parser\AST</Filter>
     </ClCompile>
+    <ClCompile Include="ast_test.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="access_array.cpp">
+      <Filter>Исходные файлы\Parser\AST</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lexer.h">
@@ -307,6 +313,12 @@
     </ClInclude>
     <ClInclude Include="singletonh.h">
       <Filter>Файлы заголовков\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ast_test.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="access_array.h">
+      <Filter>Файлы заголовков\Parser\AST</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -60,7 +60,11 @@ enum class TokenType
 	/* Contecst fruently grammar */
 	STMT,
 	EXPR,
+	
 	ACCESS_ELEMENT,	// []
+	ACCESS_ARR,		// '['EXPR']' '['EXPR']' ACCESS_ARR
+	ACCESS_FIELDS,	// '.' WORD '.' WORD ACCESS_FIELDS
+
 	DEC, // declare
 	DEF,	// define
 	LVALUE,

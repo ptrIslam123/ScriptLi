@@ -9,7 +9,6 @@
 
 class DeclareStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	DeclareStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	DeclareStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -20,8 +19,8 @@ public:
 	bool isInit_list(const TokenType&) const;
 
 private:
-	AST_ptr expr;
-	AST_ptr init_list;
+	AST* expr;
+	AST* init_list;
 };
 
 #endif // !_DECLARE_STATEMENT_H_

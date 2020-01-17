@@ -9,7 +9,6 @@
 
 class LvalueStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	LvalueStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	LvalueStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -27,7 +26,7 @@ private:
 	void setEqulyy_t(NodeAST*);
 	
 private:
-	AST_ptr rvalue;
+	AST* rvalue;
 };
 
 #endif // !_LVALUE_STATEMENT_H_

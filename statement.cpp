@@ -7,8 +7,8 @@
 #include "rvalue_statement.h"
 #include "declare_statement.h"
 
-#define make_ast_l(class_type) std::make_unique<class_type>(container, allocator, position)
-#define make_ast_r(class_type) std::make_unique<class_type>(container, std::move(allocator), position)
+#define make_ast_l(class_type) makeAST(class_type, container, allocator, position)
+#define make_ast_r(class_type) makeAST(class_type, container, std::move(allocator), position)
 
 /*
 	stmt -> dec |
@@ -23,39 +23,25 @@
 Statement::Statement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 { 
-	//dec_ = make_ast_l(DeclareStatement);
-	//if_ = make_ast_l(IfStatement);
-	//while_ = make_ast_l(WhileStatement);
-	//struct_ = make_ast_l(StructStatement);
-	//lvalue_ = make_ast_l(LvalueStatement);
-	//rvalue_ = make_ast_l(RvalueStatement);
-	//ret_ = make_ast_l(ReturnStatement);
-	stmt_t[TokenType::DEC] = make_ast_l(DeclareStatement);
-	stmt_t[TokenType::IF] = make_ast_l(IfStatement);
-	stmt_t[TokenType::WHILE] = make_ast_l(WhileStatement);
-	stmt_t[TokenType::STRUCT] = make_ast_l(StructStatement);
-	stmt_t[TokenType::LVALUE] = make_ast_l(LvalueStatement);
-	stmt_t[TokenType::RVALUE] = make_ast_l(RvalueStatement);
-	stmt_t[TokenType::RET] = make_ast_l(ReturnStatement);
+	stmt_t[TokenType::DEC] = make_ast_l(ASTClassType::DEC);
+	stmt_t[TokenType::IF] = make_ast_l(ASTClassType::IF);
+	stmt_t[TokenType::WHILE] = make_ast_l(ASTClassType::WHILE);
+	stmt_t[TokenType::STRUCT] = make_ast_l(ASTClassType::STRUCT);
+	stmt_t[TokenType::LVALUE] = make_ast_l(ASTClassType::LVALUE);
+	stmt_t[TokenType::RVALUE] = make_ast_l(ASTClassType::RVALUE);
+	stmt_t[TokenType::RET] = make_ast_l(ASTClassType::RET);
 }
 
 Statement::Statement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	: BaseASTFunctionality(container, allocator, position)
 {
-	/*dec_ = make_ast_r(DeclareStatement);
-	if_ = make_ast_r(IfStatement);
-	while_ = make_ast_r(WhileStatement);
-	struct_ = make_ast_r(StructStatement);
-	lvalue_ = make_ast_r(LvalueStatement);
-	rvalue_ = make_ast_r(RvalueStatement);
-	ret_ = make_ast_r(ReturnStatement);*/
-	stmt_t[TokenType::DEC] = make_ast_r(DeclareStatement);
-	stmt_t[TokenType::IF] = make_ast_r(IfStatement);
-	stmt_t[TokenType::WHILE] = make_ast_r(WhileStatement);
-	stmt_t[TokenType::STRUCT] = make_ast_r(StructStatement);
-	stmt_t[TokenType::LVALUE] = make_ast_r(LvalueStatement);
-	stmt_t[TokenType::RVALUE] = make_ast_r(RvalueStatement);
-	stmt_t[TokenType::RET] = make_ast_r(ReturnStatement);
+	stmt_t[TokenType::DEC] = make_ast_r(ASTClassType::DEC);
+	stmt_t[TokenType::IF] = make_ast_r(ASTClassType::IF);
+	stmt_t[TokenType::WHILE] = make_ast_r(ASTClassType::WHILE);
+	stmt_t[TokenType::STRUCT] = make_ast_r(ASTClassType::STRUCT);
+	stmt_t[TokenType::LVALUE] = make_ast_r(ASTClassType::LVALUE);
+	stmt_t[TokenType::RVALUE] = make_ast_r(ASTClassType::RVALUE);
+	stmt_t[TokenType::RET] = make_ast_r(ASTClassType::RET);
 }
 
 NodeAST* Statement::build()

@@ -123,9 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="access_array.cpp" />
     <ClCompile Include="allocator.cpp" />
     <ClCompile Include="argument_list.cpp" />
     <ClCompile Include="ast.cpp" />
+    <ClCompile Include="ast_test.cpp" />
     <ClCompile Include="base_ast_functionality.cpp" />
     <ClCompile Include="base_token.cpp" />
     <ClCompile Include="call_function_statement.cpp" />
@@ -161,9 +163,11 @@
     <ClCompile Include="while_statement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="access_array.h" />
     <ClInclude Include="allocator.h" />
     <ClInclude Include="argument_list.h" />
     <ClInclude Include="ast.h" />
+    <ClInclude Include="ast_test.h" />
     <ClInclude Include="base_ast_functionality.h" />
     <ClInclude Include="base_token.h" />
     <ClInclude Include="call_function_statement.h" />

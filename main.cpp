@@ -10,7 +10,7 @@
 
 #include "pasrer.h"
 #include "ast.h"
-
+#include "expression_ast.h"
 
 #include "singletonh.h"
 #include "allocator.h"
@@ -20,60 +20,63 @@
 std::unique_ptr<Container> createLex(const std::string&);
 std::string fileInputStream();
 
-
+#define print(val) std::cout << val << "\n"
 
 class Widget
 {
 public:
-	Widget(int x, short y)
+	Widget(const std::string& id)
 	{
-		x_ = x;
-		y_ = y;
+		id_ = id;
 	}
 	Widget()
-		:x_(0),y_(0)
+		:id_("")
 	{}
 
-	void setX(int x) { x_ = x;  }
-	void setY(int y) { y_ = y;  }
+	void set(const std::string& id)
+	{
+		id_ = id;
+	}
 
-	int getX() { return x_; }
-	int getY() { return y_; }
+	std::string get()
+	{
+		return id_;
+	}
+	
 
 private:
-	int x_;
-	int y_;
-};
-auto factoryM = [](const TokenType&)
-{
-	return new Widget();
+	std::string id_;
 };
 
-
-int main()
+auto getTokens = [](const std::string& data)
 {
-
-	/*std::string data = fileInputStream();
-	
-	auto container = makeContainer(ContainerType::List,0);
+	auto container = makeContainer(ContainerType::List, 0);
 	auto lexical = makeLexicalGrammar(GrammarType::STD_GRAMMAR, data);
 
 	Lexer lexer(data, lexical, container);
 	lexer.run();
 
-	auto tokens = lexer.getTokens();*/
+	return lexer.getTokens();
+};
 
-	Singleton<Widget,TokenType, decltype(factoryM)> r(factoryM);
+int main()
+{
 
-	Widget*  w1 = r.getBeen(TokenType::ADD);
-	w1->setX(1010);
-	w1->setY(2020);
+	std::string data = fileInputStream();
+	
+	auto tokens = getTokens(data);
+	test_show_tokens(tokens.get());
+	Allocator<NodeAST> allocator;
+	size_t position = 0;
+	AST* test = makeASTunit(ASTClassType::ARGS_LIST, tokens.get(), allocator, position);
+	//// ÊÀÆÅÒÜÑß ÌÀÒÜ ÅÃÎ ÐÀÁÎÒÀÅÒ ÏÐÈÄÓ ÏÐÎÂÅÐÜÞ!!!!!!!
 
-	printf("w1 = {x1 = %d, y= %d}\n", w1->getX(), w1->getY());
+	test->build();
 
+	/*Expression* expr = (Expression*)test;
 
-	Widget* w2 = r.getBeen(TokenType::MULT);
-	printf("w2 = {x1 = %d, y= %d}\n", w2->getX(), w2->getY());
+	std::cout << "res = " << expr->isId(TokenType::NUMBER_INT) << "\n";*/
+
 	return 0;
 }
 
@@ -100,7 +103,3 @@ std::string fileInputStream()
 	
 }
 
-std::unique_ptr<Container> createLex(const std::string& data)
-{
-	return nullptr;
-}

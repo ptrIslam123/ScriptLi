@@ -9,7 +9,6 @@
 
 class InitializedList : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	InitializedList(Container*, const Allocator<NodeAST>&, size_t&);
 	InitializedList(Container*, Allocator<NodeAST>&&, size_t&);
@@ -26,7 +25,7 @@ private:
 	void init_list_production(NodeAST*);
 
 private:
-	AST_ptr expr;
+	AST* expr;
 };
 
 #endif // !_INIT_LIST_H_

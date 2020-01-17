@@ -9,7 +9,6 @@
 
 class StatementList : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	StatementList(Container*, const Allocator<NodeAST>&, size_t&);
 	StatementList(Container*, Allocator<NodeAST>&&, size_t&);
@@ -21,7 +20,7 @@ private:
 	void stmt_list_t(NodeAST*);
 
 private:
-	AST_ptr stmt;
+	AST* stmt;
 };
 
 #endif // !_STATEMENT_LIST_H_

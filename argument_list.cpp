@@ -9,13 +9,13 @@
 ArgumentList::ArgumentList(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	expr = std::make_unique<Expression>(container, allocator, position);
+	expr = makeAST(ASTClassType::RVALUE, container, allocator, position);
 }
 
 ArgumentList::ArgumentList(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	:BaseASTFunctionality(container, std::move(allocator), position)
 {
-	expr = std::make_unique<Expression>(container, std::move(allocator), position);
+	expr = makeAST(ASTClassType::RVALUE, container, std::move(allocator), position);
 }
 
 NodeAST* ArgumentList::build()
@@ -52,6 +52,10 @@ void ArgumentList::args_list_t(NodeAST* root, bool LQ)
 			throw "synatx error";
 		}
 	}
+	else if ( isNullArgs_list(getType(0)) )
+	{
+		return;
+	}
 	else
 	{
 		throw "synatxx error";
@@ -60,8 +64,9 @@ void ArgumentList::args_list_t(NodeAST* root, bool LQ)
 
 inline bool ArgumentList::isExpr(const TokenType& type) const
 {
-	auto expression = static_cast<Expression*>(expr.get());
-	return type == TokenType::LQ || expression->isId(type);
+	auto expression = static_cast<Expression*>(expr);
+	bool res = expression->isId(type);
+	return type == TokenType::LQ || res;
 }
 
 inline bool ArgumentList::isRQ(const TokenType& type) const
@@ -74,7 +79,12 @@ inline bool ArgumentList::isComma(const TokenType& type) const
 	return type == TokenType::COMMA;
 }
 
-bool ArgumentList::isShapeLQ(const TokenType& type) const
+inline bool ArgumentList::isShapeLQ(const TokenType& type) const
 {
 	return type == TokenType::SHAPE_LQ;
+}
+
+inline bool ArgumentList::isNullArgs_list(const TokenType& type) const
+{
+	return isRQ(type);
 }

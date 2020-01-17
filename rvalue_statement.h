@@ -9,7 +9,6 @@
 
 class RvalueStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	RvalueStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	RvalueStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -18,7 +17,7 @@ public:
 	bool isExpr(const TokenType&) const;
 
 private:
-	AST_ptr expr;
+	AST* expr;
 };
 
 #endif // !_RVALUE_STATEMENT_H_

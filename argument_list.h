@@ -9,7 +9,6 @@
 
 class ArgumentList : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	ArgumentList(Container*, const Allocator<NodeAST>&, size_t&);
 	ArgumentList(Container*, Allocator<NodeAST>&&, size_t&);
@@ -19,12 +18,12 @@ public:
 	bool isRQ(const TokenType&) const;
 	bool isComma(const TokenType&) const;
 	bool isShapeLQ(const TokenType&) const;
-
+	bool isNullArgs_list(const TokenType&) const;
 private:
 	void args_list_t(NodeAST*, bool LQ = false);
 
 private:
-	AST_ptr expr;
+	AST* expr;
 };
 
 #endif // !_ARGS_LIST_H_

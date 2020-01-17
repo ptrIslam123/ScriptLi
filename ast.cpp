@@ -1,3 +1,5 @@
+#include "singletonh.h"
+
 #include "ast.h"
 #include "expression_ast.h"
 #include "rvalue_statement.h"
@@ -17,11 +19,29 @@
 #include "call_function_statement.h"
 
 #include "test_token_type.h"
+#include "ast_test.h"
+
 
 #define allocAST_L(CLASS_AST,CONTAINER,ALLOCATOR,POSITION) return new CLASS_AST(CONTAINER, ALLOCATOR, POSITION) 
 #define allocAST_R(CLASS_AST,CONTAINER,ALLOCATOR,POSITION) return new CLASS_AST(CONTAINER, std::move(ALLOCATOR), POSITION) 
-#define EXEPTION(INF)	std::cout << INF << "\n";	\
-						throw;						\
+
+
+auto factoryASTBeen = [](const ASTClassType& type, Container* container, const Allocator<NodeAST>& allocator, size_t& position)
+{
+	return makeASTunit(type, container, allocator, position);
+};
+
+static Singleton<AST, ASTClassType, decltype(factoryASTBeen)> poolBeens(factoryASTBeen);
+
+AST* getBeen(const ASTClassType & type, Container * container, const Allocator<NodeAST>& allocator, size_t& position)
+{
+	return poolBeens.instance(type, container, allocator, position);
+}
+
+AST* getBeen(const ASTClassType& type, Container* container, Allocator<NodeAST>&& allocator, size_t& position)
+{
+	return poolBeens.instance(type, container, std::move(allocator), position);
+}
 
 
 AST* makeASTunit(const ASTClassType& type, Container* container, const Allocator<NodeAST>& allocator, size_t& position)
@@ -45,10 +65,9 @@ AST* makeASTunit(const ASTClassType& type, Container* container, const Allocator
 		case ASTClassType::PARAMS_LIST: allocAST_L(ParamsListStatement,container,allocator,position);
 		case ASTClassType::CALL: allocAST_L(CallFunctionStatement,container,allocator,position);
 		default :
-			EXEPTION("undefine ast class")
+			return nullptr;
 	}
 }
-
 
 AST* makeASTunit(const ASTClassType& type, Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 {
@@ -71,6 +90,6 @@ AST* makeASTunit(const ASTClassType& type, Container* container, Allocator<NodeA
 	case ASTClassType::PARAMS_LIST: allocAST_R(ParamsListStatement, container, allocator, position);
 	case ASTClassType::CALL: allocAST_R(CallFunctionStatement, container, allocator, position);
 	default:
-		EXEPTION("undefine ast class")
+		return nullptr;
 	}
 }

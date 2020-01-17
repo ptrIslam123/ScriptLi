@@ -9,13 +9,13 @@
 FieldsListStatement::FieldsListStatement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	dec = std::make_unique<DeclareStatement>(container, allocator, position);
+	dec = makeAST(ASTClassType::DEC, container, allocator, position);
 }
 
 FieldsListStatement::FieldsListStatement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	: BaseASTFunctionality(container, std::move(allocator), position)
 {
-	dec = std::make_unique<DeclareStatement>(container, allocator, position);
+	dec = makeAST(ASTClassType::DEC, container, allocator, position);
 }
 
 NodeAST* FieldsListStatement::build()

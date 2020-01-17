@@ -21,14 +21,13 @@
 
 Parser::Parser(Container* container)
 	:position(0),
-	header(nullptr),
-	stmt( std::make_unique<Statement>( container, Allocator<NodeAST>(), position ) )
+	header(nullptr)
 {}
 
 
 void Parser::run()
 {
-	header = stmt->build();
+	//header = stmt->build();
 }
 
 NodeAST* Parser::getResult() const

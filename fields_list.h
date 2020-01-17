@@ -9,7 +9,6 @@
 
 class FieldsListStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	FieldsListStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	FieldsListStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -22,7 +21,7 @@ public:
 private:
 	void fields_list_t(NodeAST*, bool ShapeLQ = false);
 private:
-	AST_ptr dec;
+	AST* dec;
 };
 
 #endif // !_FILEDS_LIS_STATEMENT_H_

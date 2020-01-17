@@ -9,16 +9,16 @@
 WhileStatement::WhileStatement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	body_loop = std::make_unique<StatementList>(container, allocator, position);
-	expr = std::make_unique<Expression>(container, allocator, position);
+	body_loop = makeAST(ASTClassType::STMT_LIST, container, allocator, position);
+	expr = makeAST(ASTClassType::RVALUE, container, allocator, position);
 }
 
 
 WhileStatement::WhileStatement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	:BaseASTFunctionality(container, std::move(allocator), position)
 {
-	body_loop = std::make_unique<StatementList>(container, std::move(allocator), position);
-	expr = std::make_unique<Expression>(container, std::move(allocator), position);
+	body_loop = makeAST(ASTClassType::STMT_LIST, container, std::move(allocator), position);
+	expr = makeAST(ASTClassType::RVALUE, container, std::move(allocator), position);
 }
 
 NodeAST* WhileStatement::build()
@@ -53,7 +53,7 @@ void WhileStatement::while_t(NodeAST* root)
 
 bool WhileStatement::isExpr(const TokenType& type) const
 {
-	auto expression = static_cast<Expression*>(expr.get());
+	auto expression = static_cast<Expression*>(expr);
 	return type == TokenType::LQ || expression->isId(type);
 }
 

@@ -9,7 +9,6 @@
 
 class IfStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	IfStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	IfStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -24,8 +23,8 @@ private:
 	void matcher(NodeAST*);
 
 private:
-	AST_ptr stmt_list;
-	AST_ptr expr;
+	AST* stmt_list;
+	AST* expr;
 };
 
 #endif // !_IF_STATEMENT_H_

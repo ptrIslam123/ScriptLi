@@ -9,13 +9,13 @@
 StructStatement::StructStatement(Container* container, const Allocator<NodeAST>& allocator, size_t& position)
 	:BaseASTFunctionality(container, allocator, position)
 {
-	fields_list = std::make_unique<FieldsListStatement>(container, allocator, position);
+	fields_list = makeAST(ASTClassType::FIELDS_LIST, container, allocator, position);
 }
 
 StructStatement::StructStatement(Container* container, Allocator<NodeAST>&& allocator, size_t& position)
 	:BaseASTFunctionality(container, std::move(allocator), position)
 {
-	fields_list = std::make_unique<FieldsListStatement>(container, std::move(allocator), position);
+	fields_list = makeAST(ASTClassType::FIELDS_LIST, container, std::move(allocator), position);
 }
 
 NodeAST* StructStatement::build()

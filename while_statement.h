@@ -9,7 +9,6 @@
 
 class WhileStatement : public AST, BaseASTFunctionality
 {
-	using AST_ptr = std::unique_ptr<AST>;
 public:
 	WhileStatement(Container*, const Allocator<NodeAST>&, size_t&);
 	WhileStatement(Container*, Allocator<NodeAST>&&, size_t&);
@@ -22,8 +21,8 @@ private:
 	void while_t(NodeAST*);
 
 private:
-	AST_ptr body_loop;
-	AST_ptr expr;
+	AST* body_loop;
+	AST* expr;
 };
 
 #endif // !WHILE_STATEMENT_H_
